@@ -29,14 +29,12 @@ body {
 }
 
 h2 {
-  font-family: "League Spartan", sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
 p,
 li {
-  font-family: "League Spartan", sans-serif;
   line-height: 1.5;
 }
 
@@ -49,7 +47,6 @@ a:link,
 a:hover,
 a:active,
 a:visited {
-  /* color: var(--white); */
   font-weight: 400;
   text-decoration: none;
 }
