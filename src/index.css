@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600&display=swap");
+
+#root,
+html,
+body,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark-gray: hsl(0, 0%, 63%);
+  --black: hsl(0, 0%, 0%);
+  --white: hsl(0, 0%, 100%);
+  --very-dark-gray: hsl(0, 0%, 27%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--dark-gray);
+  color: var(--black);
+  font-family: "League Spartan", sans-serif;
+  height: 100vh;
+}
+
+h2 {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+p,
+li {
+  font-family: "League Spartan", sans-serif;
+  line-height: 1.5;
+}
+
+ul {
+  list-style: none;
+}
+
+a,
+a:link,
+a:hover,
+a:active,
+a:visited {
+  /* color: var(--white); */
+  font-weight: 400;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background-color: var(--black);
+  border-radius: 4px;
+  color: var(--white);
+  cursor: pointer;
+  outline: none;
+  padding: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--very-dark-gray);
+}
+
+/* @media screen and (max-width: 650px) {
+ 
+} */
