@@ -36,6 +36,7 @@ h2 {
 p,
 li {
   line-height: 1.5;
+  font-weight: 500;
 }
 
 ul {
@@ -54,18 +55,13 @@ a:visited {
 button {
   border: none;
   background-color: var(--black);
-  border-radius: 4px;
   color: var(--white);
   cursor: pointer;
   outline: none;
-  padding: 1rem;
+  padding: 0.8rem 1.1rem;
   transition: all 0.3s ease-in-out;
 }
 
 button:hover {
   background-color: var(--very-dark-gray);
 }
-
-/* @media screen and (max-width: 650px) {
- 
-} */

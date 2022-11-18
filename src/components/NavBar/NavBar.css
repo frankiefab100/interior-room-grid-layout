@@ -25,19 +25,30 @@
 }
 
 .nav-links li {
-  list-style: none;
   font-size: 1rem;
   padding: 10px 20px;
 }
 
 .nav-links li a {
+  position: relative;
   color: var(--white);
   opacity: 0.9;
-  font-size: 1rem;
 }
 
-.nav-links li a:hover {
-  color: var(--cta-secondary);
+.nav-links li a:before {
+  position: absolute;
+  content: "";
+  background-color: var(--white);
+  left: 20%;
+  right: 20%;
+  top: 120%;
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-links li a:hover::before {
+  transform: scaleX(1);
 }
 
 @media (max-width: 768px) {
