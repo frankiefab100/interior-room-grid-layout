@@ -1,34 +1,101 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Arrow from "/assets/icon-arrow.svg";
 import AngleLeft from "/assets/icon-angle-left.svg";
 import AngleRight from "/assets/icon-angle-right.svg";
-import HeroImg from "/assets/mobile-image-hero-1.jpg";
+import { ITEMS } from "../../data/carouselItems";
 import ImgLeft from "/assets/image-about-dark.jpg";
 import ImgRight from "/assets/image-about-light.jpg";
 import "./Home.css";
 
 const Home = () => {
+  const [position, setPosition] = useState(0);
+  const [play, setPlay] = useState(true);
+
+  let autoPlay;
+
+  useEffect(() => {
+    autoPlay =
+      play &&
+      setTimeout(() => {
+        setPosition(position === ITEMS.length - 1 ? 0 : position + 1);
+      }, 3000);
+  });
+
   return (
     <div className="home">
-      <div className="hero-img">
-        <img className="img1" src={HeroImg} alt="hero image" />
+      <div
+        className="hero-img"
+        onMouseEnter={() => {
+          setPlay(false);
+          clearTimeout(autoPlay);
+        }}
+        onMouseLeave={() => setPlay(true)}
+      >
+        <div className="carousel-image">
+          {ITEMS.map((image, index) => {
+            return (
+              <picture key={image.id}>
+                <source
+                  className={
+                    index === position ? "carousel active" : "carousel"
+                  }
+                  media="(max-width: 768px)"
+                  srcSet={image.mobile}
+                />
+                <img
+                  className={
+                    index === position ? "carousel active" : "carousel"
+                  }
+                  src={image.desktop}
+                  alt={`Image${image.id}`}
+                />
+              </picture>
+            );
+          })}
+        </div>
         <div className="carousel-control">
-          <button href="button" role="button">
+          <button
+            onClick={() =>
+              setPosition(position === ITEMS.length - 1 ? 0 : position + 1)
+            }
+          >
             <img src={AngleLeft} alt="left" />
           </button>
-          <button href="button" role="button">
+          <button
+            onClick={() =>
+              setPosition(position === ITEMS.length - 1 ? 0 : position + 1)
+            }
+          >
             <img src={AngleRight} alt="right" />
           </button>
         </div>
       </div>
-      <div className="hero-text">
-        <h1 className="hero-header">We are available all across the globe</h1>
-        <p className="hero-note">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ratione
-          expedita temporibus aperiam ducimus ab natus consectetur incidunt
-          deleniti, unde quas a est.
-        </p>
-        <div className="hero-cta">
+      <div className="carousel-text">
+        <div className="heading">
+          {ITEMS.map((title, index) => {
+            return (
+              <h1
+                key={index}
+                className={index === position ? "carousel active" : "carousel"}
+              >
+                {title.heading}
+              </h1>
+            );
+          })}
+        </div>
+        <div className="paragraph">
+          {ITEMS.map((text, index) => {
+            return (
+              <p
+                key={index}
+                className={index === position ? "carousel active" : "carousel"}
+              >
+                {text.body}
+              </p>
+            );
+          })}
+        </div>
+        <div className="btn" role="button">
           Shop Now
           <img src={Arrow} alt="arrow icon" />
         </div>
@@ -39,9 +106,12 @@ const Home = () => {
       <div className="about-text">
         <h2 className="about-header">About our furniture</h2>
         <p className="about-note">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae
-          obcaecati porro aliquam hic fugit officiis minus dolor consequuntur
-          delectus reiciendis.
+          Our multifunctional collection blends design and function to suit your
+          individual taste. Make each room unique, or pick a cohesive theme that
+          best express your interests and what inspires you. Find the furniture
+          pieces you need, from traditional to contemporary styles or anything
+          in between. Product specialists are available to help you create your
+          dream space.
         </p>
       </div>
       <div className="img-right">
