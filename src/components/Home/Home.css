@@ -4,6 +4,7 @@
   grid-template-rows: repeat(3, 1fr);
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .hero-img {
@@ -12,10 +13,31 @@
   grid-row: 1/3;
 }
 
-.hero-img > img {
-  object-fit: cover;
+.carousel-image {
+  position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+img.carousel {
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel {
+  position: absolute;
+  display: flex;
+  flex: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel.active {
+  opacity: 1;
+  pointer-events: visible;
 }
 
 .carousel-control {
@@ -25,14 +47,42 @@
   right: -99px;
 }
 
-.hero-text {
+.heading,
+.paragraph {
+  position: relative;
+}
+
+.heading {
+  margin-bottom: 120px;
+}
+
+.heading h1 {
+  font-size: 3rem;
+}
+
+.paragraph p,
+.about-note {
+  color: #666;
+}
+
+.carousel-text {
   background-color: var(--white);
   grid-column: 5/8;
   grid-row: 1/3;
-  padding: 50px;
+  padding: 120px 60px;
 }
 
-.hero-cta img {
+.btn,
+.about-header {
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+.btn {
+  margin-top: 280px;
+}
+
+.btn img {
   padding-left: 22px;
 }
 
@@ -55,8 +105,6 @@
 }
 
 .about-header {
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   padding-bottom: -10px;
 }
 
@@ -71,16 +119,62 @@
   height: 100%;
 }
 
+@media (max-width: 1186px) and (min-width: 769px) {
+  .heading {
+    margin-bottom: 80px;
+  }
+  .heading h1 {
+    font-size: 2rem;
+  }
+  .paragraph p {
+    line-height: 1.2;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .home {
     display: block;
+    overflow: inherit;
   }
 
-  .hero-text {
-    padding: 25px;
+  .hero-img {
+    display: inline;
+  }
+
+  .heading h1 {
+    font-size: 2.5rem;
+  }
+
+  .carousel {
+    width: 100%;
+  }
+
+  .carousel-image {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: inherit;
+  }
+
+  .carousel-text {
+    padding: 40px;
+    height: 300px;
   }
 
   .carousel-control {
     right: 15px;
+  }
+}
+
+@media (max-width: 445px) and (min-width: 260px) {
+  .heading {
+    margin-bottom: 50px;
+  }
+  .heading h1 {
+    font-size: 2rem;
+  }
+  .paragraph p {
+    margin: 40px 0 0;
+    line-height: 1.2;
   }
 }
