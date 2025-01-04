@@ -44,7 +44,7 @@ img.carousel {
   position: absolute;
   background-color: var(--black);
   bottom: 0px;
-  right: -99px;
+  right: -98px;
 }
 
 .heading,
@@ -162,7 +162,7 @@ img.carousel {
   }
 
   .carousel-control {
-    right: 15px;
+    right: 0px;
   }
 }
 
